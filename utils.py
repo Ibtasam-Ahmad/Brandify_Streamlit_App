@@ -6,7 +6,7 @@ def chat_with_user(user_query, api_key):
     client = OpenAI(api_key=api_key)
     try:
         completion = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model="Biggin Scott Maintenance",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": user_query},
