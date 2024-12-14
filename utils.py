@@ -21,6 +21,24 @@ def get_faq_response(query, faq_file='faq_data.json'):
     try:
         with open(faq_file, 'r') as f:
             faqs = json.load(f)
-        return faqs.get(query, "I’m not sure about that. Please reach out to support.")
+        for category, faq_list in faqs.items():
+            for faq in faq_list:
+                if query.lower() in faq['question'].lower():
+                    return faq['answer']
+        return "I’m not sure about that. Please reach out to support."
     except Exception as e:
         return f"Error loading FAQs: {e}"
+
+def get_all_faqs(faq_file='faq_data.json'):
+    """Fetch and return all FAQs in a structured format."""
+    try:
+        with open(faq_file, 'r') as f:
+            faqs = json.load(f)
+        
+        # Debugging: Check if faqs is loaded properly
+        print(f"FAQs Loaded: {faqs}")  # Print the loaded data
+
+        return faqs
+    except Exception as e:
+        return f"Error loading FAQs: {e}"
+

@@ -47,9 +47,26 @@ def main():
     elif choice == "FAQs":
         st.title("Frequently Asked Questions")
         query = st.text_input("Search for a topic:")
+
         if query:
             response = get_faq_response(query)
             st.write("**Answer:**", response)
+        else:
+            # Display all FAQs if no search query is entered
+            st.subheader("All FAQs")
+            faqs = get_all_faqs()  # Get all FAQs
+            
+            # Iterate over categories and FAQs
+            for category, faq_list in faqs.items():
+                st.markdown(f"### {category}")
+                for faq in faq_list:
+                    # Make sure faq is a dictionary with 'question' and 'answer' keys
+                    if isinstance(faq, dict):
+                        st.markdown(f"**Q:** {faq['question']}")
+                        st.markdown(f"**A:** {faq['answer']}")
+                        st.markdown("---")
+                    else:
+                        st.write("Error: FAQ item is not a dictionary:", faq)
 
     elif choice == "Targeting Plan":
         st.title("Targeting Plan")

@@ -1,6 +1,93 @@
 {
-    "What is AEO?": "Answer Engine Optimization improves your online presence.",
-    "What is VSO?": "Voice Search Optimization helps with voice assistants.",
-    "What is Geofencing?": "Geofencing creates virtual boundaries for location-based ads.",
-    "What is OTT advertising?": "Over-the-top (OTT) advertising targets streaming service users."
-}
+    "General": [
+      {
+        "question": "What is Brandify?",
+        "answer": "Brandify is a digital marketing platform that specializes in Over-The-Top (OTT) advertising, Connected TV (CTV) advertising, and geofencing solutions. We help businesses connect with their target audiences through highly targeted and data-driven digital advertising."
+      },
+      {
+        "question": "How can Brandify help my business?",
+        "answer": "Brandify enables businesses to reach specific audiences based on location, interests, demographics, and behaviors. With our services, you can reduce wasted ad spend, improve engagement rates, and drive more relevant traffic and conversions."
+      }
+    ],
+    "OTT & CTV Advertising": [
+      {
+        "question": "What is OTT advertising?",
+        "answer": "OTT advertising refers to ads delivered directly to viewers through internet-connected streaming platforms, bypassing traditional cable and satellite channels. It includes platforms like Hulu, YouTube TV, and Roku."
+      },
+      {
+        "question": "What is the difference between OTT and CTV advertising?",
+        "answer": "OTT (Over-The-Top) is the technology that streams content over the internet, while CTV (Connected TV) refers specifically to the devices used to view OTT content, such as smart TVs and streaming devices. CTV advertising allows you to reach viewers directly on these connected devices."
+      },
+      {
+        "question": "How does Brandify target viewers on OTT and CTV platforms?",
+        "answer": "Brandify uses advanced audience segmentation and data analysis to target viewers based on factors like location, demographics, interests, and behaviors. This ensures that your ads reach the right people at the right time."
+      },
+      {
+        "question": "What types of businesses benefit most from OTT and CTV advertising?",
+        "answer": "OTT and CTV advertising work well for brands looking to engage with a broad audience in a more personalized way. Industries like retail, healthcare, automotive, real estate, and entertainment benefit significantly, as they can leverage these ads to reach highly relevant audiences."
+      },
+      {
+        "question": "Can OTT and CTV ads be targeted locally?",
+        "answer": "Yes, Brandify can set up OTT and CTV campaigns to target specific geographic locations, making it an ideal solution for local businesses or companies looking to reach audiences in specific regions."
+      }
+    ],
+    "Geofencing Advertising": [
+      {
+        "question": "What is geofencing?",
+        "answer": "Geofencing is a location-based advertising technique that allows you to target mobile devices within a predefined geographic area, such as a store, event, or competitor location."
+      },
+      {
+        "question": "How does geofencing work?",
+        "answer": "Geofencing uses GPS, Wi-Fi, or cellular data to create a virtual boundary around a specified location. When users enter this boundary, they receive targeted ads on their mobile devices."
+      },
+      {
+        "question": "What types of businesses can benefit from geofencing?",
+        "answer": "Geofencing is ideal for businesses that want to attract local customers, such as retail stores, restaurants, hotels, event venues, and automotive dealerships. It’s also effective for companies that want to target visitors to competitor locations."
+      },
+      {
+        "question": "How precise is geofencing?",
+        "answer": "Geofencing can be highly precise, targeting areas as small as a single building or as large as a neighborhood. Brandify’s technology ensures accurate targeting to engage users within your desired location."
+      },
+      {
+        "question": "Can geofencing be used for event marketing?",
+        "answer": "Yes, geofencing is an excellent tool for event marketing. It allows businesses to target attendees before, during, and after an event, making it effective for conferences, trade shows, and live performances."
+      }
+    ],
+    "Campaign Management & Reporting": [
+      {
+        "question": "Does Brandify provide real-time reporting?",
+        "answer": "Yes, we offer real-time reporting on campaign performance. Our clients have access to data on impressions, engagement, and conversions, allowing you to monitor results and optimize campaigns as needed."
+      },
+      {
+        "question": "How do I measure the success of my campaigns?",
+        "answer": "Brandify provides detailed analytics on each campaign, including reach, engagement, conversions, and ROI. This data helps you understand what’s working and allows us to adjust strategies to maximize your results."
+      },
+      {
+        "question": "What kind of support does Brandify offer?",
+        "answer": "Our team provides full support from campaign strategy to implementation and reporting. We’re available to answer questions, provide insights, and help optimize campaigns to ensure you get the best results."
+      }
+    ],
+    "Getting Started": [
+      {
+        "question": "How can I start a campaign with Brandify?",
+        "answer": "Starting a campaign is simple! Contact us through our website, and one of our specialists will reach out to understand your needs, discuss targeting options, and create a personalized advertising plan for your business."
+      },
+      {
+        "question": "Do I need a long-term contract?",
+        "answer": "No, Brandify operates without requiring long-term contracts. Our services are flexible, with no minimums, so you can scale your campaigns based on your goals and budget."
+      },
+      {
+        "question": "What is the cost of using Brandify’s services?",
+        "answer": "The cost of Brandify’s services depends on your specific needs, such as campaign scale and targeting options. Contact us for a personalized quote."
+      },
+      {
+        "question": "Does Brandify provide creative services?",
+        "answer": "Yes, we offer creative services to help you develop engaging and effective ads. Our team can assist with ad design and content to ensure your campaigns achieve the highest impact."
+      },
+      {
+        "question": "How does Brandify customize targeting for my business needs?",
+        "answer": "Brandify uses advanced data-driven targeting methods to reach your specific audience based on location, demographics, behaviors, and interests. We tailor each campaign to ensure your ads reach the most relevant users, maximizing engagement and ROI. To get a personalized targeting plan for your business, visit our Get Your Targeting Plan page."
+      }
+    ]
+  }
+  
