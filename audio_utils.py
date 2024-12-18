@@ -1,28 +1,28 @@
-from openai import OpenAI
 from io import BytesIO
+import openai
 
 def speech_to_text(audio_file, api_key):
     """Convert speech to text using OpenAI Whisper."""
     try:
-        client = OpenAI(api_key=api_key)
-        transcript = client.audio.transcriptions.create(
-            file=audio_file,
-            model="whisper-1"
+        openai.api_key = api_key
+        audio_bytes = audio_file.read()
+        response = openai.Audio.transcribe(
+            model="whisper-1",
+            file=BytesIO(audio_bytes)
         )
-        return transcript.text
+        return response['text']
     except Exception as e:
         return f"Error during transcription: {e}"
 
 def text_to_speech(text, api_key):
     """Convert text to speech using OpenAI API."""
     try:
-        client = OpenAI(api_key=api_key)
-        response = client.audio.speech.create(
-            model="tts-1",
+        openai.api_key = api_key
+        response = openai.Audio.create(
             input=text,
-            voice="alloy"
+            voice="alloy",
+            model="tts-1"
         )
-        audio_data = BytesIO(response.content)
-        return audio_data
+        return BytesIO(response['audio'])
     except Exception as e:
         return f"Error during text-to-speech conversion: {e}"

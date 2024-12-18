@@ -1,6 +1,6 @@
 import streamlit as st
-from targeting_plan import targeting_plan_form
-from utils import chat_with_user, get_faq_response
+from targeting_plans import targeting_plan_form
+from utils import chat_with_user, get_faq_response, get_all_faqs
 from audio_utils import speech_to_text, text_to_speech
 
 def main():
@@ -17,13 +17,11 @@ def main():
 
     if choice == "Chat":
         st.title("Chat with Brandify.io")
-
-        # User can input text or upload audio
         st.write("You can either type your query or upload an audio file.")
 
         # Text input
         user_query = st.text_input("Type your query:")
-        
+
         # Audio input
         audio_file = st.file_uploader("Or upload an audio file (MP3/WAV format)", type=["mp3", "wav"])
 
@@ -52,21 +50,15 @@ def main():
             response = get_faq_response(query)
             st.write("**Answer:**", response)
         else:
-            # Display all FAQs if no search query is entered
             st.subheader("All FAQs")
-            faqs = get_all_faqs()  # Get all FAQs
-            
-            # Iterate over categories and FAQs
+            faqs = get_all_faqs()
             for category, faq_list in faqs.items():
                 st.markdown(f"### {category}")
                 for faq in faq_list:
-                    # Make sure faq is a dictionary with 'question' and 'answer' keys
-                    if isinstance(faq, dict):
-                        st.markdown(f"**Q:** {faq['question']}")
-                        st.markdown(f"**A:** {faq['answer']}")
-                        st.markdown("---")
-                    else:
-                        st.write("Error: FAQ item is not a dictionary:", faq)
+                    st.markdown(f"**Q:** {faq['question']}")
+                    st.markdown(f"**A:** {faq['answer']}")
+                    st.markdown("---")
+                st.markdown("Do Check https://brandify.io/faq/ for more faqs")
 
     elif choice == "Targeting Plan":
         st.title("Targeting Plan")
