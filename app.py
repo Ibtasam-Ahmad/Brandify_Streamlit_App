@@ -23,13 +23,13 @@ def main():
         user_query = st.text_input("Type your query:")
 
         # Audio input
-        audio_file = st.file_uploader("Or upload an audio file (MP3/WAV format)", type=["mp3", "wav"])
+        # audio_file = st.file_uploader("Or upload an audio file (MP3/WAV format)", type=["mp3", "wav"])
 
-        if audio_file:
-            st.write("Processing your audio...")
-            with st.spinner("Transcribing audio to text..."):
-                user_query = speech_to_text(audio_file, api_key)
-                st.write("**Transcribed Text:**", user_query)
+        # if audio_file:
+            # st.write("Processing your audio...")
+            # with st.spinner("Transcribing audio to text..."):
+                # user_query = speech_to_text(audio_file, api_key)
+               # st.write("**Transcribed Text:**", user_query)
 
         if user_query:
             with st.spinner("Generating response..."):
