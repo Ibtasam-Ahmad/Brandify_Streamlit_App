@@ -1,5 +1,5 @@
 import streamlit as st
-from targeting_plans import targeting_plan_form
+from targeting_plan import targeting_plan_form
 from utils import chat_with_user, get_faq_response, get_all_faqs
 from audio_utils import speech_to_text, text_to_speech
 
