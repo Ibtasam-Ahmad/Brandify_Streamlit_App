@@ -37,10 +37,10 @@ def main():
                 st.write("**Bot Response:**", response)
 
                 # Option to convert bot response to audio
-                if st.checkbox("Convert response to audio"):
-                    with st.spinner("Converting text to speech..."):
-                        audio_response = text_to_speech(response, api_key)
-                        st.audio(audio_response, format="audio/mp3")
+                # if st.checkbox("Convert response to audio"):
+                    # with st.spinner("Converting text to speech..."):
+                       # audio_response = text_to_speech(response, api_key)
+                        # st.audio(audio_response, format="audio/mp3")
 
     elif choice == "FAQs":
         st.title("Frequently Asked Questions")
