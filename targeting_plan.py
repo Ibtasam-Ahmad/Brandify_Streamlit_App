@@ -12,7 +12,7 @@ def submit_targeting_form(data):
 
 def targeting_plan_form():
     """Render the targeting plan form."""
-    st.markdown("## Fill out the form below to receive a personalized advertising targeting plan based on your industry and location.")
+    st.markdown("Fill out the form below to receive a personalized advertising targeting plan based on your industry and location.")
     
     # Collecting user inputs
     first_name = st.text_input("First Name")
