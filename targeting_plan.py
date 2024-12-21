@@ -1,4 +1,5 @@
 import streamlit as st
+from urllib.parse import urlencode
 
 def validate_zip_or_location(location):
     """Validate ZIP code or location input (e.g., New York, NY or 94109)."""
@@ -7,8 +8,29 @@ def validate_zip_or_location(location):
     return len(location) > 0  # Assume valid if it's a non-empty text string
 
 def submit_targeting_form(data):
-    st.success("Thank you! Your request has been submitted. We’ll send your personalized targeting plan shortly.")
-    st.json(data)  # Display submitted data (optional for testing)
+    """Redirect to Gmail with form data."""
+    subject = "Targeting Plan Request"
+    body = f"""
+    Hello,
+
+    Please find the submitted targeting plan request details below:
+
+    First Name: {data['First Name']}
+    Last Name: {data['Last Name']}
+    Name of Business: {data['Business Name']}
+    Website: {data['Website']}
+    Industry: {data['Industry']}
+    Location: {data['Location']}
+    Advertising Types: {", ".join(data['Advertising Type'])}
+    Budget: {data['Budget']}
+    Email: {data['Email']}
+    Phone: {data['Phone']}
+    Notes: {data['Notes']}
+    """
+
+    # Create a mailto link
+    mailto_link = f"mailto:?subject={urlencode({'': subject})}&body={urlencode({'': body})}"
+    st.markdown(f"[Click here to open Gmail](javascript:window.open('{mailto_link}'))", unsafe_allow_html=True)
 
 def targeting_plan_form():
     """Render the targeting plan form."""
@@ -61,3 +83,6 @@ def targeting_plan_form():
             submit_targeting_form(form_data)
 
     st.markdown("Do Check https://brandify.io/targeting-plan/ for more Target Plans & Pricing")
+
+# Call the function to render the form
+targeting_plan_form()
