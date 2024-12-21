@@ -1,5 +1,5 @@
 import streamlit as st
-from urllib.parse import urlencode
+from urllib.parse import urlencode, quote
 
 def validate_zip_or_location(location):
     """Validate ZIP code or location input (e.g., New York, NY or 94109)."""
@@ -8,7 +8,7 @@ def validate_zip_or_location(location):
     return len(location) > 0  # Assume valid if it's a non-empty text string
 
 def submit_targeting_form(data):
-    """Redirect to Gmail with form data."""
+    """Create a mailto link to redirect to Gmail."""
     subject = "Targeting Plan Request"
     body = f"""
     Hello,
@@ -28,9 +28,10 @@ def submit_targeting_form(data):
     Notes: {data['Notes']}
     """
 
-    # Create a mailto link
-    mailto_link = f"mailto:?subject={urlencode({'': subject})}&body={urlencode({'': body})}"
-    st.markdown(f"[Click here to open Gmail](javascript:window.open('{mailto_link}'))", unsafe_allow_html=True)
+    # Construct the mailto URL
+    mailto_link = f"mailto:?subject={quote(subject)}&body={quote(body)}"
+    st.markdown(f"[Click here to open Gmail](mailto:?subject={quote(subject)}&body={quote(body)})", unsafe_allow_html=True)
+    st.markdown(f"<a href='{mailto_link}' target='_blank'>Open Gmail</a>", unsafe_allow_html=True)
 
 def targeting_plan_form():
     """Render the targeting plan form."""
