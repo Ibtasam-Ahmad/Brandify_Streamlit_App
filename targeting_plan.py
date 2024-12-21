@@ -31,7 +31,7 @@ def submit_targeting_form(data):
     # Construct the mailto URL
     mailto_link = f"mailto:?subject={quote(subject)}&body={quote(body)}"
     st.markdown(f"[Click here to open Gmail](mailto:?subject={quote(subject)}&body={quote(body)})", unsafe_allow_html=True)
-    st.markdown(f"<a href='{mailto_link}' target='_blank'>Open Gmail</a>", unsafe_allow_html=True)
+    # st.markdown(f"<a href='{mailto_link}' target='_blank'>Open Gmail</a>", unsafe_allow_html=True)
 
 def targeting_plan_form():
     """Render the targeting plan form."""
