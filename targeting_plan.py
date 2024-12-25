@@ -1,4 +1,5 @@
 import streamlit as st
+import smtplib
 from urllib.parse import quote
 
 def validate_zip_or_location(location):
@@ -7,8 +8,27 @@ def validate_zip_or_location(location):
         return len(location) == 5
     return len(location) > 0  # Assume valid if it's a non-empty text string
 
+def send_email(sender_email, sender_password, receiver_emails, subject, message):
+    """Send an email to multiple recipients using smtplib."""
+    try:
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        server.login(sender_email, sender_password)
+        email_text = f"Subject: {subject}\n\n{message}"
+        # Send the email to all recipients
+        server.sendmail(sender_email, receiver_emails, email_text)
+        st.success(f"Email successfully sent to: {', '.join(receiver_emails)}.")
+    except smtplib.SMTPException as e:
+        st.error(f"Failed to send email. Error: {e}")
+    finally:
+        server.quit()
+
 def submit_targeting_form(data):
-    """Create a mailto link to redirect to Gmail and copy data to clipboard."""
+    """Send form data via email."""
+    sender_email = "razam6568@gmail.com"  # Replace with your email
+    sender_password = "uxey mvhf waea gstc"  # Replace with your app password
+    receiver_emails = [sender_email, data["Email"]]  # Send to yourself and the entered email
+
     subject = "Targeting Plan Request"
     body = f"""
     Hello,
@@ -17,38 +37,11 @@ def submit_targeting_form(data):
 
     First Name: {data['First Name']}
     Last Name: {data['Last Name']}
-    Name of Business: {data['Business Name']}
-    Website: {data['Website']}
-    Industry: {data['Industry']}
-    Location: {data['Location']}
-    Advertising Types: {", ".join(data['Advertising Type'])}
-    Budget: {data['Budget']}
-    Email: {data['Email']}
-    Phone: {data['Phone']}
-    Notes: {data['Notes']}
+ 
     """
 
-    # Construct the mailto URL
-    mailto_link = f"mailto:?subject={quote(subject)}&body={quote(body)}"
-    
-    # JavaScript to copy to clipboard
-    js_code = f"""
-    <script>
-    function copyToClipboard() {{
-        const text = `{body}`;
-        navigator.clipboard.writeText(text).then(() => {{
-            alert("Form data copied to clipboard!");
-        }}, () => {{
-            alert("Failed to copy data to clipboard.");
-        }});
-    }}
-    </script>
-    <button onclick="copyToClipboard()">Copy Data to Clipboard</button>
-    <a href="{mailto_link}" target="_blank" style="margin-left: 10px; text-decoration: underline; color: blue;">
-    Open Gmail
-    </a>
-    """
-    st.markdown(js_code, unsafe_allow_html=True)
+    # Send the email
+    send_email(sender_email, sender_password, receiver_emails, subject, body)
 
 def targeting_plan_form():
     """Render the targeting plan form."""
@@ -75,14 +68,14 @@ def targeting_plan_form():
         ]
     )
     budget = st.selectbox("Do You Have a Budget in Mind?", [1000, 2000, 5000, 10000, "Not Sure"])
-    email = st.text_input("Your Email", placeholder="example@email.com")
+    email = st.text_input("Your Email (Receiver's Email)", placeholder="example@email.com")
     phone = st.text_input("Your Phone Number", placeholder="(555) 123-4567")
     notes = st.text_area("Notes", placeholder="Any specific details or goals for your targeting plan")
 
     if st.button("Get My Target Plan"):
         # Validate required fields
-        if not first_name or not last_name or industry == "- Select Your Industry -" or not validate_zip_or_location(location):
-            st.error("Please fill out all required fields and ensure your location is valid.")
+        if not first_name or not last_name or industry == "- Select Your Industry -" or not validate_zip_or_location(location) or not email:
+            st.error("Please fill out all required fields and ensure your location and email are valid.")
         else:
             # Prepare form data for submission
             form_data = {
