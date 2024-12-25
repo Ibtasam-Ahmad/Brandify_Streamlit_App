@@ -1,5 +1,5 @@
 import streamlit as st
-from urllib.parse import urlencode, quote
+from urllib.parse import quote
 
 def validate_zip_or_location(location):
     """Validate ZIP code or location input (e.g., New York, NY or 94109)."""
@@ -8,7 +8,7 @@ def validate_zip_or_location(location):
     return len(location) > 0  # Assume valid if it's a non-empty text string
 
 def submit_targeting_form(data):
-    """Create a mailto link to redirect to Gmail."""
+    """Create a mailto link to redirect to Gmail and copy data to clipboard."""
     subject = "Targeting Plan Request"
     body = f"""
     Hello,
@@ -30,8 +30,25 @@ def submit_targeting_form(data):
 
     # Construct the mailto URL
     mailto_link = f"mailto:?subject={quote(subject)}&body={quote(body)}"
-    st.markdown(f"[Click here to open Gmail](mailto:?subject={quote(subject)}&body={quote(body)})", unsafe_allow_html=True)
-    # st.markdown(f"<a href='{mailto_link}' target='_blank'>Open Gmail</a>", unsafe_allow_html=True)
+    
+    # JavaScript to copy to clipboard
+    js_code = f"""
+    <script>
+    function copyToClipboard() {{
+        const text = `{body}`;
+        navigator.clipboard.writeText(text).then(() => {{
+            alert("Form data copied to clipboard!");
+        }}, () => {{
+            alert("Failed to copy data to clipboard.");
+        }});
+    }}
+    </script>
+    <button onclick="copyToClipboard()">Copy Data to Clipboard</button>
+    <a href="{mailto_link}" target="_blank" style="margin-left: 10px; text-decoration: underline; color: blue;">
+    Open Gmail
+    </a>
+    """
+    st.markdown(js_code, unsafe_allow_html=True)
 
 def targeting_plan_form():
     """Render the targeting plan form."""
@@ -83,7 +100,7 @@ def targeting_plan_form():
             }
             submit_targeting_form(form_data)
 
-    st.markdown("Do Check https://brandify.io/targeting-plan/ for more Target Plans & Pricing")
+    st.markdown("Do Check [Target Plans & Pricing](https://brandify.io/targeting-plan/) for more details.")
 
 # Call the function to render the form
 targeting_plan_form()
