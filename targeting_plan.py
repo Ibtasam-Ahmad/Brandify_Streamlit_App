@@ -25,8 +25,8 @@ def send_email(sender_email, sender_password, receiver_emails, subject, message)
 
 def submit_targeting_form(data):
     """Send form data via email."""
-    sender_email = "razam6568@gmail.com"  # Replace with your email
-    sender_password = "uxey mvhf waea gstc"  # Replace with your app password
+    sender_email = ""  # Replace with your email
+    sender_password = ""  # Replace with your app password
     receiver_emails = [sender_email, data["Email"]]  # Send to yourself and the entered email
 
     subject = "Targeting Plan Request"
@@ -37,7 +37,15 @@ def submit_targeting_form(data):
 
     First Name: {data['First Name']}
     Last Name: {data['Last Name']}
- 
+    Name of Business: {data['Business Name']}
+    Website: {data['Website']}
+    Industry: {data['Industry']}
+    Location: {data['Location']}
+    Advertising Types: {", ".join(data['Advertising Type'])}
+    Budget: {data['Budget']}
+    Email: {data['Email']}
+    Phone: {data['Phone']}
+    Notes: {data['Notes']}
     """
 
     # Send the email
