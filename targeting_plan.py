@@ -25,8 +25,8 @@ def send_email(sender_email, sender_password, receiver_emails, subject, message)
 
 def submit_targeting_form(data):
     """Send form data via email."""
-    sender_email = ""  # Replace with your email
-    sender_password = ""  # Replace with your app password
+    sender_email = "targeting@brandify.io"  # Replace with your email
+    sender_password = "bqpn mjmh hnww veib"  # Replace with your app password
     receiver_emails = [sender_email, data["Email"]]  # Send to yourself and the entered email
 
     subject = "Targeting Plan Request"
